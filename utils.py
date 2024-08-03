@@ -14,7 +14,7 @@ def haversine(lat1, lon1, lat2, lon2):
     return distance
 
 
-def find_nearby_hotels(lat, long, radius):
+def find_nearby_hotels(lat, long, radius, rating=0):
     # Load the dataset
     hotels = pd.read_csv('Hotels_List.csv')
 
@@ -22,5 +22,5 @@ def find_nearby_hotels(lat, long, radius):
     hotels['Distance'] = hotels.apply(lambda row: haversine(lat, long, row['Latitude'], row['Longitude']), axis=1)
 
     # Filter hotels based on distance and optional minimum rating
-    nearby_hotels = hotels[hotels['Distance'] <= radius]
+    nearby_hotels = hotels[(hotels['Distance'] <= radius) & (hotels['Rating'] >= rating)]
     return nearby_hotels
