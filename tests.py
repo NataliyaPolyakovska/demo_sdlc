@@ -15,7 +15,12 @@ class TestStringMethods(unittest.TestCase):
 
     def test_find_nearby_hotels(self):
         # This test remains the same to ensure backward compatibility
-        assert len(find_nearby_hotels(50.1109, 8.6821, 10)) >= 5
+        assert find_nearby_hotels(50.1109, 8.6821, 0.3)['Hotel Name'].iloc[0] == 'Mandarin Oriental'
+
+    def test_find_nearby_hotels_empty(self):
+        # This test remains the same to ensure backward compatibility
+        assert len(find_nearby_hotels(50.1109, 8.6821, 0)) < 1
+
 
 
 if __name__ == '__main__':

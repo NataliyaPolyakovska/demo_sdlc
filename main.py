@@ -10,10 +10,7 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    lat = 50.1109
-    long = 8.6821
-    radius = 0.2  # kilometers
 
-    result = find_nearby_hotels(lat, long, radius)
+    result = find_nearby_hotels(50.1109, 8.6821, 0.3)['Hotel Name'].iloc[0]
     print(result)
 
